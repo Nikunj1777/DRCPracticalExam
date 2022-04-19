@@ -15,6 +15,11 @@ class NewsListViewController: UIViewController {
             self.tblNewsList.dataSource = self
         }
     }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            self.activityIndicator.startAnimating()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +29,14 @@ class NewsListViewController: UIViewController {
                 if isSuccess {
                     for news in newsModel {
                         DataModel.sharedInstance.setNewsData(newsData: news)
-                        self.tblNewsList.reloadData()
                     }
+                    self.tblNewsList.reloadData()
+                    self.activityIndicator.isHidden = true
                 }
             }
         } else {
             self.getDataAndSetDatainTableView()
+            self.activityIndicator.isHidden = true
         }
         // Do any additional setup after loading the view.
     }
@@ -38,7 +45,7 @@ class NewsListViewController: UIViewController {
         newsModel.removeAll()
         if let newsList = DataModel.sharedInstance.getNewsList() as? [NewsDetails] {
             for datam in newsList {
-                newsModel.append(NewsListModel(source_name: datam.source_name!, author_name: datam.author_name!, desc: datam.desc!, title: datam.title!, urlMain: datam.urlMain!, urlImage: datam.urlToImage!, dateTime: datam.datetime!))
+                newsModel.append(NewsListModel(source_name: datam.source_name!, author_name: datam.author_name!, desc: datam.desc!, title: datam.title!, urlMain: datam.urlMain!, urlImage: datam.urlImage!, dateTime: datam.datetime!, urlData: datam.urlToImage!))
             }
             self.tblNewsList.reloadData()
         }
@@ -59,12 +66,19 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.lblTitle.text = newsModel[indexPath.row].title
         cell.lblSourceName.text = newsModel[indexPath.row].author_name
         cell.lblDTAuthorName.text = newsModel[indexPath.row].dateTime + " " + newsModel[indexPath.row].source_name
-        cell.imgNews.image = Common.setImageFromString(imgString: newsModel[indexPath.row].urlImage)
+        cell.imgNews.image = UIImage(data: newsModel[indexPath.row].urlData)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 108
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsDeatilViewController") as? NewsDeatilViewController {
+            vC.model = newsModel[indexPath.row]
+            self.navigationController?.pushViewController(vC, animated: true)
+        }
     }
     
 }

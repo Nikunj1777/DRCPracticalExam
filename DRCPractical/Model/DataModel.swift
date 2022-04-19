@@ -42,8 +42,9 @@ class DataModel: NSObject {
         news.setValue(newsData.desc, forKey: "desc")
         news.setValue(newsData.title, forKey: "title")
         news.setValue(newsData.urlMain, forKey: "urlMain")
-        news.setValue(newsData.urlImage, forKey: "urlToImage")
+        news.setValue(newsData.urlImage, forKey: "urlImage")
         news.setValue(newsData.dateTime, forKey: "datetime")
+        news.setValue(newsData.urlData, forKey: "urlToImage")
         self.saveContext()
     }
     

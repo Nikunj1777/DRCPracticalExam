@@ -21,11 +21,11 @@ class Common {
     }
     
     // MARK: - Set image from string url
-    class func setImageFromString(imgString: String) -> UIImage {
+    class func setDataImageFromString(imgString: String) -> Data {
         if let url = URL(string: imgString), let data = try? Data(contentsOf: url) as? Data, let img = UIImage(data: data) {
-            return img
+            return data
         } else {
-            return UIImage()
+            return Data()
         }
     }
     
