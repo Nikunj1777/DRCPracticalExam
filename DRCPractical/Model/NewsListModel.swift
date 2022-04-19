@@ -14,13 +14,15 @@ class NewsListModel {
     var title: String!
     var urlMain: String!
     var urlImage: String!
+    var dateTime: String!
     
-    init (source_name: String, author_name: String, desc: String, title: String, urlMain: String, urlImage: String) {
+    init (source_name: String, author_name: String, desc: String, title: String, urlMain: String, urlImage: String, dateTime: String) {
         self.source_name = source_name
         self.author_name = author_name
         self.desc = desc
         self.title = title
         self.urlMain = urlMain
         self.urlImage = urlImage
+        self.dateTime = dateTime
     }
 }
