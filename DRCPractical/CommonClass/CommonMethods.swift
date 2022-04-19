@@ -33,28 +33,23 @@ class Common {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(Double(NSEC_PER_SEC)))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
-//    class func getDate(dateString: String) -> Date? {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm a"
-//        dateFormatter.timeZone = TimeZone.current
-//        dateFormatter.locale = Locale.current
-//        return dateFormatter.date(from: dateString) // replace Date String
-//    }
-    
     class func convertDateFormat(inputDate: String) -> String {
-
-         let olDateFormatter = DateFormatter()
-         olDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-
-         let oldDate = olDateFormatter.date(from: inputDate)
-
-         let convertDateFormatter = DateFormatter()
-         convertDateFormatter.dateFormat = "dd'T' MMM, yyyy h:mm a"
-
-         return convertDateFormatter.string(from: oldDate!)
+        
+        let olDateFormatter = DateFormatter()
+        olDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        let oldDate = olDateFormatter.date(from: inputDate)
+        
+        let convertDateFormatter = DateFormatter()
+        convertDateFormatter.dateFormat = "dd MMM, yyyy h:mm a"
+        
+        return convertDateFormatter.string(from: oldDate ?? Date())
     }
     
-    
+    // MARK: - Reachability
+    class func networkAvailability() -> Bool {
+        return  Reachabilitys.internetAvaibility()
+    }
 }
 
 // MARK: - Extension Appdelegate

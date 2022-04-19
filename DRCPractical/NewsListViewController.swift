@@ -18,16 +18,30 @@ class NewsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataModel.sharedInstance.deleteNewsList()
-        ApiManager.callNewsListAPI { (isSuccess) in
-            if isSuccess {
-                for news in newsModel {
-                    DataModel.sharedInstance.setNewsData(newsData: news)
-                    self.tblNewsList.reloadData()
+        if Common.networkAvailability() {
+            DataModel.sharedInstance.deleteNewsList()
+            ApiManager.callNewsListAPI { (isSuccess) in
+                if isSuccess {
+                    for news in newsModel {
+                        DataModel.sharedInstance.setNewsData(newsData: news)
+                        self.tblNewsList.reloadData()
+                    }
                 }
             }
+        } else {
+            self.getDataAndSetDatainTableView()
         }
         // Do any additional setup after loading the view.
+    }
+    
+    func getDataAndSetDatainTableView() {
+        newsModel.removeAll()
+        if let newsList = DataModel.sharedInstance.getNewsList() as? [NewsDetails] {
+            for datam in newsList {
+                newsModel.append(NewsListModel(source_name: datam.source_name!, author_name: datam.author_name!, desc: datam.desc!, title: datam.title!, urlMain: datam.urlMain!, urlImage: datam.urlToImage!, dateTime: datam.datetime!))
+            }
+            self.tblNewsList.reloadData()
+        }
     }
 
 

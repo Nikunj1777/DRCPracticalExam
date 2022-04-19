@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		388FC42D280EEFAD00204077 /* Reachabilitys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388FC42C280EEFAD00204077 /* Reachabilitys.swift */; };
 		38AF3C28280EE6C800E78D52 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AF3C27280EE6C800E78D52 /* NewsTableViewCell.swift */; };
 		38D314BB280E9376009CCE53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D314BA280E9376009CCE53 /* AppDelegate.swift */; };
 		38D314BF280E9376009CCE53 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D314BE280E9376009CCE53 /* NewsListViewController.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		126A5CC820B737A24AFCFCE9 /* Pods_DRCPractical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DRCPractical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3522F79D9717082A49EDF784 /* Pods-DRCPractical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRCPractical.release.xcconfig"; path = "Target Support Files/Pods-DRCPractical/Pods-DRCPractical.release.xcconfig"; sourceTree = "<group>"; };
+		388FC42C280EEFAD00204077 /* Reachabilitys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachabilitys.swift; sourceTree = "<group>"; };
 		38AF3C27280EE6C800E78D52 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		38D314B7280E9376009CCE53 /* DRCPractical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRCPractical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38D314BA280E9376009CCE53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				38D314D2280E9907009CCE53 /* CommonMethods.swift */,
 				38D314D4280E9F60009CCE53 /* APIManager.swift */,
+				388FC42C280EEFAD00204077 /* Reachabilitys.swift */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			files = (
 				38D314BF280E9376009CCE53 /* NewsListViewController.swift in Sources */,
 				38D314C5280E9376009CCE53 /* DRCPractical.xcdatamodeld in Sources */,
+				388FC42D280EEFAD00204077 /* Reachabilitys.swift in Sources */,
 				38AF3C28280EE6C800E78D52 /* NewsTableViewCell.swift in Sources */,
 				38D314D5280E9F60009CCE53 /* APIManager.swift in Sources */,
 				38D314D3280E9907009CCE53 /* CommonMethods.swift in Sources */,
